@@ -1,0 +1,45 @@
+#include<stdio.h>
+int main(){
+unsigned long long n,anw;
+anw = 1;
+scanf("%d",&n);
+
+
+
+unsigned long long a[100000]={0};
+unsigned long long b[100000]={0};
+a[1]=0;
+a[2]=0;
+unsigned long long count = -1;
+for(unsigned long long i=2;i<n;i++)
+    for(unsigned long long j=2;j<n;j++)
+        a[i*j] = 1;
+for(unsigned long long i=2;i<=n;i++){
+    if(a[i]==0){
+     count++;
+     b[count] = i;
+
+    }
+}
+
+for(unsigned long long i=0;i<=count;i++){
+        unsigned long long aw=0;
+        //printf("直數%d\n",b[i]);
+    for(unsigned long long w=b[i];w<=n;w=w*b[i]){
+        aw = aw+n/w;
+        //printf("%d ",aw);
+    }
+
+    anw = anw*(aw+1);
+}
+
+//for(int i=0;i<=count;i++)
+    //printf("%d",b[i]);
+   // printf("\n");
+//for(int i=0;i<n;i++)
+    //printf("%d",a[i]);
+printf("%llu",anw);
+
+return 0;
+}
+

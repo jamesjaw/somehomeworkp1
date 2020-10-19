@@ -1,0 +1,155 @@
+#include<stdio.h>
+#include<string.h>
+int main(){
+int a,b;
+scanf("%d",&a);
+char as[a];
+scanf("%s",&as);
+scanf("%d",&b);
+char bs[b];
+scanf("%s",&bs);
+int max, min;
+if(a>b)
+{
+   max=a;
+   min=b;
+   int bigs[max] ;
+   int smls[max] ;
+   for(int i=0;i<max;i++)
+    bigs[i]=as[i]-'0';
+   for(int i=a-b;i<max;i++)
+    smls[i]=bs[i-(a-b)]-'0';
+   for(int i=0;i<a-b;i++)
+    smls[i]=0;
+
+   int anw[max];
+   for(int i=max-1;i>=0;i--)
+   {
+       if(bigs[i]<smls[i])
+       {
+        bigs[i]=bigs[i]+10;
+        bigs[i-1]=bigs[i-1]-1;
+       }
+    anw[i] = bigs[i]-smls[i];
+
+   }
+    int flag=0;
+    for(int i=0;i<max;i++)
+        if(anw[i]!=0){
+            flag=i;
+            break;
+        }
+
+    for(int i=flag;i<max;i++)
+        printf("%d",anw[i]);
+
+
+}
+if(b>a)
+{
+    max=b;
+    min=a;
+
+   int bigs[max] ;
+   int smls[max] ;
+   for(int i=0;i<max;i++)
+    bigs[i]=bs[i]-'0';
+   for(int i=a-b;i<max;i++)
+    smls[i]=as[i-(b-a)]-'0';
+   for(int i=0;i<b-a;i++)
+    smls[i]=0;
+
+   int anw[max];
+   for(int i=max-1;i>=0;i--)
+   {
+       if(bigs[i]<smls[i])
+       {
+        bigs[i]=bigs[i]+10;
+        bigs[i-1]=bigs[i-1]-1;
+       }
+    anw[i] = bigs[i]-smls[i];
+
+   }
+    int flag=0;
+    for(int i=0;i<max;i++)
+        if(anw[i]!=0){
+            flag=i;
+            break;
+        }
+        printf("-");
+    for(int i=flag;i<max;i++)
+        printf("%d",anw[i]);
+}
+if(a==b)
+{
+    max=a;
+    min=a;
+    int bigs[max] ;
+   int smls[max] ;
+    int bsf;
+    for(int i=0;i<max;i++){
+      if(as[i]-'0'>bs[i]-'0')
+        {
+            bsf = 1;
+           for(int j=0;j<max;j++)
+           {
+             bigs[j] = as[j]-'0';
+             smls[j] = bs[j]-'0';
+           }
+           break;
+        }
+      else if(as[i]-'0'<bs[i]-'0')
+        {
+            bsf = 2;
+           for(int j=0;j<max;j++)
+           {
+             bigs[j] = bs[j]-'0';
+             smls[j] = as[j]-'0';
+           }
+            break;
+        }
+        else
+            bsf = 0;
+
+    }
+    int anw[max];
+    for(int k=max-1;k>=0;k--)
+        {
+       if(bigs[k]<smls[k])
+       {
+        bigs[k]=bigs[k]+10;
+        bigs[k-1]=bigs[k-1]-1;
+       }
+    anw[k] = bigs[k]-smls[k];
+
+   }
+
+   int flag=0;
+    for(int i=0;i<max;i++)
+        if(anw[i]!=0){
+            flag=i;
+            break;
+        }
+        if(bsf==2){
+                  printf("-");
+    for(int i=flag;i<max;i++)
+        printf("%d",anw[i]);
+
+        }
+        if(bsf==1){
+          for(int i=flag;i<max;i++)
+        printf("%d",anw[i]);
+        }
+        if(bsf==0){
+            printf("0");
+        }
+
+
+
+}
+
+
+
+
+return 0;
+}

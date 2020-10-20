@@ -1,0 +1,32 @@
+#include<stdio.h>
+void func(int row, int col, int array[][col],int barray[][row]);
+int main(){
+int row,col;
+int n;
+scanf("%d%d",&row,&col);
+n = col;
+int array[row][col];
+int barray[col][row];
+
+func(row,col,array,barray);
+
+for(int i=0;i<col;i++)
+{
+    for(int j=0;j<row;j++)
+        printf("%d ",barray[i][j]);
+    printf("\n");
+}
+
+return 0;
+}
+void func(int row, int col, int array[][col],int barray[][row])
+{
+    int n = col;
+    for(int i=0;i<row;i++)
+    for(int j=0;j<col;j++)
+        scanf("%d",&array[i][j]);
+
+for(int i=0;i<row;i++)
+    for(int j=0;j<col;j++)
+        barray[j][n-i-1] = array[i][j];
+}

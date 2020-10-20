@@ -1,0 +1,32 @@
+#include<stdio.h>
+int main(){
+    int a,b;
+    scanf("%d%d",&a,&b);
+   
+    int min;
+    if(a>b)
+        min = b;
+    if(a<b)
+        min = a;
+    if(a==b)
+        min = a;
+
+    int c[min+1];
+    for(int i=0;i<min+1;i++)
+        c[i]=0;
+
+    for(int i=1;i<=min;i++)
+    {
+        if(a%i==0 && b%i==0)
+        c[i]=1;
+    }
+
+
+    for(int i=min;i>=1;i--)
+        if(c[i]==1)
+    {
+        printf("%d\n",i);
+        break;
+    }
+return 0;
+}

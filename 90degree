@@ -7,24 +7,63 @@ scanf("%d%d",&row,&col);
 n = col;
 int array[row][col];
 int barray[col][row];
-
-func(row,col,array,barray);
-
-for(int i=0;i<col;i++)
+ for(int i=0;i<row;i++)
+    for(int j=0;j<col;j++)
+        scanf("%d",&array[i][j]);
+int time;
+scanf("%d",&time);
+if(time%4==0)
+{
+  for(int i=0;i<row;i++)
+{
+    for(int j=0;j<col;j++)
+        printf("%d ",array[i][j]);
+    printf("\n");
+}
+}
+if(time%4==1)
+{
+    func(row,col,array,barray);
+ for(int i=0;i<col;i++)
 {
     for(int j=0;j<row;j++)
         printf("%d ",barray[i][j]);
     printf("\n");
 }
+}
+if(time%4==2)
+{
+   func(row,col,array,barray);
+   func(col,row,barray,array);
+  for(int i=0;i<row;i++)
+{
+    for(int j=0;j<col;j++)
+        printf("%d ",array[i][j]);
+    printf("\n");
+}
+}
+if(time%4==3)
+{
+    func(row,col,array,barray);
+   func(col,row,barray,array);
+   func(row,col,array,barray);
+ for(int i=0;i<col;i++)
+{
+    for(int j=0;j<row;j++)
+        printf("%d ",barray[i][j]);
+    printf("\n");
+}
+}
+
+
+
 
 return 0;
 }
 void func(int row, int col, int array[][col],int barray[][row])
 {
     int n = col;
-    for(int i=0;i<row;i++)
-    for(int j=0;j<col;j++)
-        scanf("%d",&array[i][j]);
+
 
 for(int i=0;i<row;i++)
     for(int j=0;j<col;j++)

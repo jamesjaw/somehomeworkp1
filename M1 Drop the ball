@@ -1,0 +1,62 @@
+#include<stdio.h>
+
+int main()
+{
+    int row,col;
+    scanf("%d%d",&row,&col);
+    getchar();
+    char a[row][col];
+    int b[row][col];
+    for(int i=0;i<row;i++)
+    {
+         for(int j=0;j<col;j++)
+         {
+            scanf("%c",&a[i][j]);
+            if(a[i][j]=='/')
+                b[i][j] = -1;
+            if(a[i][j]=='\\')
+                b[i][j] = 1;
+         }
+
+    getchar();
+    }
+    int ball1,ball0,t;
+    scanf("%d",&t);
+    for(int j=0;j<t;j++)
+    {
+        scanf("%d",&ball1);
+        ball1--;
+      for(int i=0;i<row;i++)
+        {
+       ball0 = ball1;
+       ball1 += b[i][ball1];
+
+       if(ball1>=col)
+       {
+          printf("Right!\n");
+          i = row;
+       }
+       if(ball1<0)
+       {
+           printf("Left!\n");
+           i = row;
+       }
+       if(ball1+b[i][ball1]==ball0)
+       {
+           printf("Stuck QQ\n");
+           i = row;
+       }
+
+        if(ball1>=0&&ball1<col&&i==row-1)
+        {
+            printf("Position:%d\n",ball0+b[i][ball1]);
+        }
+
+
+        }
+    }
+
+
+
+ return 0;
+}

@@ -1,0 +1,50 @@
+#include<stdio.h>
+int main(){
+  int a[5];
+  int b[5];
+  unsigned long long x ;
+  unsigned long long y ;
+  unsigned long long an ;
+
+  scanf("%d",&a[0]);
+  getchar();
+  scanf("%d",&a[1]);
+  scanf("%d",&a[2]);
+  getchar();
+  scanf("%d",&a[3]);
+  getchar();
+  scanf("%d",&a[4]);
+
+  scanf("%d",&b[0]);
+  getchar();
+  scanf("%d",&b[1]);
+  scanf("%d",&b[2]);
+  getchar();
+  scanf("%d",&b[3]);
+  getchar();
+  scanf("%d",&b[4]);
+
+  x = a[0]*30*24*60*60+a[1]*24*60*60+a[2]*60*60+a[3]*60+a[4];
+  y = b[0]*30*24*60*60+b[1]*24*60*60+b[2]*60*60+b[3]*60+b[4];
+  
+  if(x>y)
+    an=x-y;
+  if(y>x)
+    an=y-x;
+  if(x==y)
+    an=x-y;
+
+  printf("%d ",an/(60*60*24*30));
+  printf("%d\n",an%(60*60*24*30)/(60*60*24));
+  if(an%(60*60*24*30)%(60*60*24)/(60*60)<10)
+    printf("0");
+  printf("%d:",an%(60*60*24*30)%(60*60*24)/(60*60));
+  if(an%(60*60*24*30)%(60*60*24)%(60*60)/60<10)
+    printf("0");
+  printf("%d:",an%(60*60*24*30)%(60*60*24)%(60*60)/60);
+  if(an%60<10)
+    printf("0");
+  printf("%d\n",an%60);
+
+return 0;
+}

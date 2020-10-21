@@ -1,17 +1,45 @@
 #include<stdio.h>
+int func(int n);
 int main()
 {
     int n;
-    scanf("%d",&n);
-    int a[n];
+    int f;
+    unsigned long long anw=0;
     int flag=0;
+    scanf("%d",&n);
+    int a[10001]={0};
+
+
     for(int i=0;i<n;i++)
-        scanf("%d",&a[i]);
-    for(int i=0;i<n;i++)
-        for(int j=i+1;j<n;j++)
-            if(a[i]==a[j])
-                flag++;
-    printf("%d\n",flag);
+    {
+        scanf("%d",&f);
+        a[f]=a[f]+1;
+    }
+    for(int i=0;i<10001;i++)
+        for(int j=a[i]-1;j>0;j--)
+        {
+            if(j<1)
+                continue;
+            anw=anw+j;
+        }
+        printf("%llu\n",anw);
+
+
 
     return 0;
+}
+
+//為甚麼這個用不了
+int func(int n)
+{
+    int an=0;
+    if(n==0||n==1)
+    {
+        int x=0;
+        return x;
+    }
+    for(int i=n-1;n>0;i--)
+      an = an+i;
+
+    return an;
 }

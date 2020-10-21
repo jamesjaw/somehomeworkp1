@@ -38,7 +38,6 @@ for(int i=99;i>=0;i--)
     }
 }
 
-
 for(int i=flag;i>=0;i--)
 {
     if(a[i]=='1')
@@ -54,9 +53,6 @@ for(int i=flag;i>=0;i--)
 
 }
     printf("\n");
-
-
-
 
 return 0;
 }

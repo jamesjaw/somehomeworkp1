@@ -82,7 +82,7 @@ return 0;
 }
 void func(int row, int col, int array[][col],int barray[][row])
 {
-    int n = col;
+    int n = row;
 
 
 for(int i=0;i<row;i++)

@@ -1,0 +1,71 @@
+#include<stdio.h>
+#include<ctype.h>
+long long b[110];
+long long bin[110];
+int main(){
+char c,cc,ccc;
+long long an=0;
+
+
+int n=0;
+int nin=0;
+int m=0;
+scanf("%lld",&b[n++]);
+for(int i=0;i<100;i++)
+{
+
+    scanf("%c",&c);
+    if(c=='\n'||c=='\0')
+        break;
+    cc = getchar();
+    if(cc!='(')
+        ungetc(cc,stdin);
+    if(cc=='(')
+    {
+        an=0;
+        nin=0;
+        scanf("%d",&bin[nin++]);
+        for(int j=0;j<100;j++)
+        {
+        ccc = getchar();
+        scanf("%lld",&bin[nin++]);
+        if(ccc=='-')
+            bin[nin-1] = bin[nin-1]*-1;
+        ccc = getchar();
+        if(ccc==')')
+        {
+            for(int h=0;h<nin;h++)
+            {
+             an = an+bin[h];
+            }
+            if(c=='-')
+            {
+              an=an*-1;
+            }
+
+            b[n++] = an;
+            c = getchar();
+            break;
+        }
+        if(ccc!=')')
+            ungetc(ccc,stdin);
+        }
+    }
+    scanf("%lld",&b[n++]);
+    if(c=='-')
+    {
+    b[n-1]=b[n-1]*-1;
+    }
+
+}
+
+an=0;
+for(int i=0;i<n;i++)
+{
+    //printf("%d\n",b[i]);
+    an = an+b[i];
+}
+  printf("%lld\n",an);
+
+return 0;
+}

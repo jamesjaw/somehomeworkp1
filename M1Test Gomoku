@@ -1,0 +1,203 @@
+#include<stdio.h>
+int main(){
+int n;
+scanf("%d",&n);
+getchar();
+char a[15*n][15];
+for(int i=0;i<15*n;i++)
+{
+    for(int j=0;j<15;j++)
+    {
+        scanf("%c",&a[i][j]);
+    }
+    getchar();
+}
+/*for(int i=0;i<15*n;i++)
+{
+    for(int j=0;j<15;j++)
+    {
+        printf("%c",a[i][j]);
+    }
+    printf("\n");
+}
+*/
+int count=0;
+int flag=0;
+for(int time=0;time<n;time++)
+{
+    flag = 0;
+    for(int i=15*time;i<15*(time+1);i++)
+        for(int j=0;j<15;j++){
+            if(a[i][j]=='b')
+            {
+                count=0;
+                for(int k=0;k<5;k++)
+                {
+                    if((j+k)==15)
+                    {
+                        break;
+                    }
+
+                    if(a[i][j+k]=='b')
+                    {
+                        count++;
+                    }
+                    if(count==5)
+                        {
+                            printf("black\n");
+                            flag = 1;
+                        }
+                }
+                count=0;
+                for(int k=0;k<5;k++)
+                {
+
+                    if((i+k)==(time+1)*15)
+                    {
+                        break;
+                    }
+
+                    if(a[i+k][j]=='b')
+                    {
+                        count++;
+                    }
+                    if(count==5)
+                        {
+                            printf("black\n");
+                            flag = 1;
+                        }
+
+                }
+                count=0;
+                for(int k=0;k<5;k++)
+                {
+
+                    if((j+k)==15||(i+k)==15*(time+1))
+                    {
+                        break;
+                    }
+
+                    if(a[i+k][j+k]=='b')
+                    {
+                        count++;
+                    }
+                    if(count==5)
+                        {
+                            printf("black\n");
+                            flag = 1;
+                        }
+
+                }
+                count=0;
+            for(int k=0;k<5;k++)
+                {
+
+                    if((j-k)<0||(i+k)==15*(time+1))
+                    {
+                        break;
+                    }
+
+                    if(a[i+k][j-k]=='b')
+                    {
+                        count++;
+                    }
+                    if(count==5)
+                        {
+                            printf("black\n");
+                            flag = 1;
+                        }
+                }
+
+            }
+            //=================================w
+            if(a[i][j]=='w')
+            {
+
+                count=0;
+                for(int k=0;k<5;k++)
+                {
+
+                    if((j+k)==15)
+                    {
+                        break;
+                    }
+
+                    if(a[i][j+k]=='w')
+                    {
+                        count++;
+
+                    }
+                    if(count==5)
+                        {
+                            printf("white\n");
+                            flag = 1;
+                        }
+                }
+                count=0;
+                for(int k=0;k<5;k++)
+                {
+
+                    if((i+k)==(time+1)*15)
+                    {
+                        break;
+                    }
+
+                    if(a[i+k][j]=='w')
+                    {
+                        count++;
+                    }
+                    if(count==5)
+                        {
+                            printf("white\n");
+                            flag = 1;
+                        }
+
+                }
+                count=0;
+                for(int k=0;k<5;k++)
+                {
+
+                    if((j+k)==15||(i+k)==(time+1)*15)
+                    {
+                        break;
+                    }
+
+                    if(a[i+k][j+k]=='w')
+                    {
+                        count++;
+                    }
+                    if(count==5)
+                        {
+                            printf("white\n");
+                            flag = 1;
+                        }
+
+                }
+                count=0;
+            for(int k=0;k<5;k++)
+                {
+
+                    if((j-k)<0||(i+k)==(time+1)*15)
+                    {
+                        break;
+                    }
+
+                    if(a[i+k][j-k]=='w')
+                    {
+                        count++;
+                    }
+                    if(count==5)
+                        {
+                            printf("white\n");
+                            flag = 1;
+                        }
+                }
+
+            }
+        }
+        if(flag==0)
+            printf("none\n");
+}
+
+return 0;
+}
